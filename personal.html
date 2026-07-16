@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
-     
+        
         .profile-card {
             display: flex;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             gap: 50px; 
             max-width: 900px;
@@ -58,10 +58,39 @@
             width: 100px; 
         }
 
+        .motto-box {
+            background: #f3f0ff;
+            border-left: 5px solid #7c3aed;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-style: italic;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background-color: #e3fafc;
+            color: #0c8599;
+            border: 1px solid #99e9f2;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             .profile-card {
                 flex-direction: column;
                 text-align: center;
+                align-items: center;
                 gap: 20px;
                 padding: 30px 20px;
                 margin: 20px;
@@ -70,12 +99,18 @@
                 width: auto;
                 display: inline;
             }
+            .skills-container {
+                justify-content: center;
+            }
         }
     </style>
+    
 </head>
+    
 <body>
 
 <header style="padding: 40px 20px;">
+    
     <h1>ประวัติส่วนตัว</h1>
     
     <nav style="flex-direction: row; justify-content: center; gap: 10px; margin-top: 20px; background: transparent; box-shadow: none; padding: 0;">
@@ -84,17 +119,27 @@
         <a href="education.html" style="color: white; border-color: rgba(255,255,255,0.6); background: transparent; width: auto; padding: 8px 16px; font-size: 15px;">การศึกษา</a>
         <a href="activities.html" style="color: white; border-color: rgba(255,255,255,0.6); background: transparent; width: auto; padding: 8px 16px; font-size: 15px;">กิจกรรม</a>
         <a href="contact.html" style="color: white; border-color: rgba(255,255,255,0.6); background: transparent; width: auto; padding: 8px 16px; font-size: 15px;">ติดต่อ</a>
+    
     </nav>
+    
 </header>
 
 <section class="profile-card">
 
-    <div>
+    <div style="position: sticky; top: 20px;">
         <img src="images/me.jpe" class="profile" alt="รูปโปรไฟล์" style="margin: 0; width: 220px; height: 220px;">
+        
+        <div class="motto-box">
+            <strong>คติประจำใจ:</strong> <br>
+            "ความพยายามไม่เคยทำร้ายใครที่ตั้งใจจริง"
+        </div>
+        
     </div>
 
     <div class="profile-info">
+        
         <h2>ข้อมูลส่วนตัว</h2>
+        
         <p><strong>ชื่อ :</strong> สุฐิดา รอดมี</p>
         <p><strong>ชื่อเล่น :</strong> พิม</p>
         <p><strong>วันเกิด :</strong> 5 กันยายน พ.ศ 2551</p>
@@ -102,9 +147,23 @@
         <p><strong>โรงเรียน :</strong> โรงเรียนพานทอง</p>
         <p><strong>เชื้อชาติ :</strong> ไทย</p>
         <p><strong>ศาสนา :</strong> พุทธ</p>
+
+        
+        <h2 style="margin-top: 30px;">ทักษะความสามารถ</h2>
+        
+        <div class="skills-container">
+            
+            <span class="skill-tag">💻 Computer (Word/PPT)</span>
+            <span class="skill-tag">🎨 Canva Presentation</span>
+            <span class="skill-tag">🌐 HTML / CSS Basic</span>
+            <span class="skill-tag">🗣️ Communication Skill</span>
+            
+        </div>
+        
     </div>
 
 </section>
 
 </body>
+    
 </html>
