@@ -1,125 +1,177 @@
 body {
-    margin:0;
+/* ล้างค่าเริ่มต้นเพื่อให้แสดงผลเท่ากันทุกเบราว์เซอร์ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Sarabun', sans-serif;
-    background:linear-gradient(135deg,#eef2ff,#dbeafe,#f3e8ff);
+    background: linear-gradient(135deg, #eef2ff, #dbeafe, #f3e8ff);
+    color: #2d3748;
+    min-height: 100vh;
 }
 
-header{
-    background:linear-gradient(135deg,#7c3aed,#3b82f6);
-    color:white;
-    text-align:center;
-    padding:70px 20px;
-    animation:fadeDown 1s ease;
+/* Header: ส่วนหัวไล่เฉดสี มีมิติและแอนิเมชัน */
+header {
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    animation: fadeDown 1s ease-out;
 }
 
-header h1{
-    font-size:48px;
-    margin:0;
+header h1 {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 0;
+    animation: zoom 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-header h2{
-    font-size:32px;
-    margin:15px 0;
+header h2 {
+    font-size: 32px;
+    margin: 15px 0 5px 0;
+    font-weight: 400;
 }
 
-header p{
-    font-size:20px;
+header p {
+    font-size: 20px;
+    opacity: 0.9;
+    font-weight: 300;
 }
 
-header h1{
-    animation: zoom 1.2s ease;
+/* ส่วนรูปโปรไฟล์วงกลม (แก้ไขจุด Hover ให้ทำงานได้จริงแล้ว) */
+.profile {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes zoom{
-    from{
-        transform:scale(.8);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
+.profile:hover {
+    transform: scale(1.08); /* ภาพขยายเด้งขึ้นตอนชี้เมาส์ */
 }
 
+/* Navigation: ปรับปุ่มให้เรียงแนวนอนสวยงามแบบโมเดิร์น */
 nav {
     background: transparent; 
-    padding: 20px;
+    padding: 30px 20px;
     display: flex;
-    flex-direction: column; 
-    align-items: center;    
-    gap: 12px;              
-    box-shadow: none;       
+    flex-direction: row;     /* จัดเรียงเป็นแนวนอน */
+    justify-content: center;
+    flex-wrap: wrap;         /* รองรับหน้าจอแท็บเล็ตและมือถือ */
+    gap: 15px;              
 }
 
 nav a {
     display: block;
-    width: 200px;           
+    width: 160px;           
     text-align: center;
-    padding: 12px 20px;     
-    color: #4dabf7;       
+    padding: 10px 20px;     
+    color: #3b82f6;       
     font-weight: bold;
     text-decoration: none;  
-    border: 2px solid #a5d8ff; 
+    border: 2px solid #bfdbfe; 
     border-radius: 50px;    
     background: white;      
-    transition: 0.3s;       
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 nav a:hover {
     color: white;            
-    background: #74c0fc;
-    border-color: #74c0fc;
+    background: #3b82f6;
+    border-color: #3b82f6;
     transform: translateY(-3px); 
-    box-shadow: 0 5px 15px rgba(116, 192, 252, 0.4);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
-.hero{
-    width:80%;
-    margin:40px auto;
-    background:white;
-    padding:40px;
-    border-radius:25px;
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
-
-    opacity:0;
-    animation:fadeUp 1s ease forwards;
-    transition:.4s;
+/* Content Container: คุมขนาดเนื้อหาตรงกลางไม่ให้ยืดกว้างเกินไป */
+.main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.hero:hover{
-    transform:translateY(-10px);
-    box-shadow:0 25px 50px rgba(0,0,0,.2);
+/* Hero Section (แก้ไขการค่อยๆ ลอยขึ้นมาแบบต่อเนื่อง) */
+.hero {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    
+    opacity: 0;
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(50px);
+/* ค่อยๆ ทยอยแสดงผลทีละกล่อง (Staggered Animation) */
+.hero:nth-of-type(1) { animation-delay: 0.2s; }
+.hero:nth-of-type(2) { animation-delay: 0.4s; }
+.hero:nth-of-type(3) { animation-delay: 0.6s; }
+
+.hero:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.hero h2 {
+    color: #4f46e5;
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+.hero p {
+    color: #4a5568;
+    line-height: 1.8;
+}
+
+.hero strong {
+    color: #3b82f6;
+}
+
+.button {
+    display: inline-block;
+    background: #7c3aed;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+/* Footer ส่วนท้ายหน้าเว็บ */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* --- KEYFRAMES ANIMATION --- */
+@keyframes zoom {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
-.button{
-    display:inline-block;
-    background:#7c3aed;
-    color:white;
-    padding:15px 30px;
-    border-radius:50px;
-    text-decoration:none;
-    margin-top:20px;
-}
-.hero h2{
-    color:#5d7df7;
-}
-
-/* Animation */
 @keyframes fadeDown {
     from {
         opacity: 0;
-        transform: translateY(-40px);
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
@@ -127,17 +179,13 @@ nav a:hover {
     }
 }
 
-.profile{
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    object-fit:cover;
-    border:5px solid white;
-    margin:20px auto;
-    display:block;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-
-.profile img:hover{
-    transform:scale(1.08);
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
