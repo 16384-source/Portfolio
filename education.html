@@ -1,1 +1,249 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การศึกษา - Portfolio สุฐิดา รอดมี</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* 🎨 โค้ดตกแต่งพิเศษสำหรับหน้าการศึกษาโดยเฉพาะ */
+        body {
+            background-color: #f1f5f9;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ตกแต่งสติกเกอร์ลอยเป็นพื้นหลังกระจายรอบ ๆ ป้องกันความโล่ง */
+        .bg-sticker {
+            position: absolute;
+            font-size: 2.3rem;
+            opacity: 0.6;
+            animation: floatSticker 4.5s ease-in-out infinite alternate;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .bg-st-1 { top: 15%; left: 7%; animation-delay: 0s; }
+        .bg-st-2 { top: 30%; right: 9%; animation-delay: 0.7s; }
+        .bg-st-3 { bottom: 25%; left: 10%; animation-delay: 1.4s; }
+        .bg-st-4 { bottom: 15%; right: 8%; animation-delay: 2.1s; }
+
+        @keyframes floatSticker {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-12px) rotate(8deg); }
+        }
+
+        /* เมนูบาร์ด้านบนสุดสีขาวสะอาด */
+        .edu-nav-container {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* จัดหน้าต่างเนื้อหาหลัก */
+        .edu-page-main {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .edu-card-wrapper {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            border: 2px solid #e0e7ff;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.05);
+        }
+
+        .edu-title-main {
+            color: #4f46e5;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .edu-desc {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* 🕰️ สไตล์โครงสร้างเส้นไทม์ไลน์การศึกษา */
+        .timeline {
+            position: relative;
+            border-left: 3px dashed #cbd5e1;
+            margin-left: 20px;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: left;
+        }
+
+        /* จุดวงกลมแสดงสถานะบนเส้นไทม์ไลน์ */
+        .timeline-dot {
+            width: 18px;
+            height: 18px;
+            background-color: #6366f1;
+            border: 4px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: -39px;
+            top: 6px;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        /* กล่องเนื้อหาของแต่ละระดับชั้น */
+        .timeline-content {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .timeline-content:hover {
+            transform: translateX(5px);
+            background-color: white;
+            border-color: #6366f1;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.06);
+        }
+
+        .timeline-content:hover .timeline-dot {
+            background-color: #3b82f6;
+            transform: scale(1.2);
+        }
+
+        /* ข้อมูลรายละเอียดด้านในกล่อง */
+        .edu-year {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #6366f1;
+            background-color: #e0e7ff;
+            padding: 4px 10px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .edu-level {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .edu-school {
+            font-size: 0.98rem;
+            color: #475569;
+            margin-bottom: 3px;
+        }
+
+        .edu-gpa {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #10b981; /* สีเขียวแสดงเกรดเฉลี่ยเฉิดฉาย */
+        }
+
+        /* ปรับสไตล์สำหรับจอมือถือ */
+        @media screen and (max-width: 600px) {
+            .edu-card-wrapper {
+                padding: 30px 15px;
+            }
+            .timeline {
+                margin-left: 10px;
+                padding-left: 20px;
+            }
+            .timeline-dot {
+                left: -29px;
+            }
+            .edu-level {
+                font-size: 1.05rem;
+            }
+            .edu-school {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+    
+<body>
+
+<span class="bg-sticker bg-st-1">🏫</span>
+<span class="bg-sticker bg-st-2">📖</span>
+<span class="bg-sticker bg-st-3">🎒</span>
+<span class="bg-sticker bg-st-4">🎓</span>
+
+<div class="edu-nav-container">
+    <nav style="margin: 0 auto; box-shadow: none; background: transparent;">
+        <a href="index.html">หน้าหลัก</a>
+        <a href="personal.html">ประวัติส่วนตัว</a>
+        <a href="education.html" class="active">การศึกษา</a>
+        <a href="activities.html">กิจกรรม</a>
+        <a href="contact.html">ติดต่อ</a>
+    </nav>
+</div>
+
+<main class="edu-page-main">
+    <div class="edu-card-wrapper">
+        <h2 class="edu-title-main">🎓 ประวัติการศึกษา (Education)</h2>
+        <p class="edu-desc">ประวัติและข้อมูลสถาบันการศึกษาในแต่ละระดับชั้นของฉันค่ะ ✨</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="edu-year">พ.ศ. 2566 - 2569</span>
+                    <h3 class="edu-level">มัธยมศึกษาตอนปลาย (ม.4 - ม.6)</h3>
+                    <p class="edu-school">โรงเรียนชื่อของคุณ (แผนการเรียน: วิทย์-คณิต / ศิลป์-ภาษา)</p>
+                    <p class="edu-gpa">เกรดเฉลี่ยสะสม (GPAX): 3.XX</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="edu-year">พ.ศ. 2563 - 2565</span>
+                    <h3 class="edu-level">มัธยมศึกษาตอนต้น (ม.1 - ม.3)</h3>
+                    <p class="edu-school">โรงเรียนชื่อของคุณ</p>
+                    <p class="edu-gpa">เกรดเฉลี่ยสะสม (GPAX): 3.XX</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="edu-year">พ.ศ. 2557 - 2562</span>
+                    <h3 class="edu-level">ประถมศึกษา (ป.1 - ป.6)</h3>
+                    <p class="edu-school">โรงเรียนชื่อของคุณ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Portfolio | สุฐิดา รอดมี</p>
+</footer>
+
+</body>
+</html>
 
