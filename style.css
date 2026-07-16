@@ -260,3 +260,92 @@ footer {
     from { transform: translateY(35px); opacity: 0.7; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+/* ======================================================= */
+/* STYLE FOR NEW MINIMAL CONTACT CARDS                     */
+/* ======================================================= */
+
+.contact-subtitle {
+    margin-bottom: 30px;
+    color: #64748b !important;
+    font-size: 0.98rem !important;
+}
+
+/* ตัวบรรจุการจัดระเบียบการเรียงตัวของบัตรติดต่อ */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+/* บัตรช่องทางติดต่อย่อย: ถอดแบบโครงสร้างความมินิมอลมาจากกล่องประวัติส่วนตัวด้านบน */
+.contact-card {
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    padding: 18px 25px;
+    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: left;
+}
+
+/* ไอคอนหน้าช่องทางติดต่อ */
+.contact-icon {
+    font-size: 1.8rem;
+    margin-right: 20px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+}
+
+/* บล็อกจัดเรียงข้อความ */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* ข้อความจ่าหน้าหัวข้อเล็กๆ */
+.contact-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6366f1; /* สีม่วงธีมเว็บหลัก */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ข้อความลิงก์ข้อมูลการติดต่อจริง */
+.contact-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #334155;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+/* 🌟 เอฟเฟกต์การโต้ตอบเมื่อเมาส์มาชี้ (Hover) เลียนแบบสไตล์ด้านบน */
+.contact-card:hover {
+    transform: translateY(-3px) scale(1.01);
+    background-color: white;
+    border-color: #6366f1;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.08);
+}
+
+.contact-card:hover .contact-value {
+    color: #3b82f6; /* เมื่อชี้แล้วให้ลิงก์ข้อมูลเปลี่ยนเป็นสีฟ้าสดใส */
+}
+
+/* 📱 ปรับการแสดงผลบัตรติดต่อให้แสดงผลเหมาะสมบนจอมือถือ */
+@media screen and (max-width: 600px) {
+    .contact-card {
+        padding: 14px 18px;
+        border-radius: 14px;
+    }
+    .contact-icon {
+        font-size: 1.5rem;
+        margin-right: 15px;
+    }
+    .contact-value {
+        font-size: 0.98rem;
+    }
+}
