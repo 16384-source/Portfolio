@@ -5,7 +5,6 @@
 <head>
     
     <meta charset="UTF-8">
-    
     <title>ประวัติส่วนตัว</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,11 +14,12 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
-        
+   
         .profile-card {
+            position: relative; 
             display: flex;
             flex-direction: row;
-            align-items: flex-start;
+            align-items: flex-start; 
             justify-content: center;
             gap: 50px; 
             max-width: 900px;
@@ -30,7 +30,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             border: 2px solid #eef2ff;
         }
-
+        
         .profile-info {
             text-align: left;
             flex-grow: 1;
@@ -86,6 +86,46 @@
             font-weight: bold;
         }
 
+        .sticker {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            animation: bounceSticker 3s ease-in-out infinite alternate;
+            z-index: 5; /* สั่งให้ลอยทับทุกส่วน */
+        }
+
+        .sticker-cat {
+            top: 25px;
+            right: 25px;
+            width: 70px;
+            height: auto;
+        }
+
+        .sticker-star {
+            top: 10px;
+            left: 35px;
+            width: 45px;
+            height: auto;
+            animation-duration: 4s;
+        }
+
+        .sticker-heart {
+            bottom: 25px;
+            right: 40px;
+            width: 50px;
+            height: auto;
+            animation-duration: 2s;
+        }
+
+        @keyframes bounceSticker {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-6px) rotate(4deg);
+            }
+        }
+
         @media (max-width: 768px) {
             .profile-card {
                 flex-direction: column;
@@ -102,15 +142,22 @@
             .skills-container {
                 justify-content: center;
             }
+            .sticker-cat {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+            }
+            .sticker-star {
+                left: 10px;
+                top: 10px;
+            }
         }
     </style>
-    
 </head>
-    
 <body>
 
 <header style="padding: 40px 20px;">
-    
     <h1>ประวัติส่วนตัว</h1>
     
     <nav style="flex-direction: row; justify-content: center; gap: 10px; margin-top: 20px; background: transparent; box-shadow: none; padding: 0;">
@@ -119,15 +166,21 @@
         <a href="education.html" style="color: white; border-color: rgba(255,255,255,0.6); background: transparent; width: auto; padding: 8px 16px; font-size: 15px;">การศึกษา</a>
         <a href="activities.html" style="color: white; border-color: rgba(255,255,255,0.6); background: transparent; width: auto; padding: 8px 16px; font-size: 15px;">กิจกรรม</a>
         <a href="contact.html" style="color: white; border-color: rgba(255,255,255,0.6); background: transparent; width: auto; padding: 8px 16px; font-size: 15px;">ติดต่อ</a>
-    
     </nav>
     
 </header>
 
 <section class="profile-card">
 
-    <div style="position: sticky; top: 20px;">
-        <img src="images/me.jpe" class="profile" alt="รูปโปรไฟล์" style="margin: 0; width: 220px; height: 220px;">
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjhpNHpyejVtdnF5bTZ0OW9pYmJmdTN2eDhoNHlhOHlsNDJkaDVmZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/X8gPscWv3rXU60nZsc/giphy.gif" class="sticker sticker-cat" alt="cat-sticker">
+    
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Y1bTI2dWdtOXgxdXFrbmV5eWFxajBhOW1wZ2lyYnduZHk2NDcyeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/pZ7eYp8N6X6N01vY6s/giphy.gif" class="sticker sticker-star" alt="star-sticker">
+    
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDV2NGw2eXRteDYzYWJhbmtuNHg5MGxndmdzMHphczhxbXJnbTdrMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/h4ZupGndxG83j7484p/giphy.gif" class="sticker sticker-heart" alt="heart-sticker">
+
+    <div style="position: relative; z-index: 2;">
+        
+        <img src="images/cat.jpg" class="profile" alt="รูปโปรไฟล์" style="margin: 0; width: 220px; height: 220px;">
         
         <div class="motto-box">
             <strong>คติประจำใจ:</strong> <br>
@@ -136,10 +189,8 @@
         
     </div>
 
-    <div class="profile-info">
-        
+    <div class="profile-info" style="z-index: 2;">
         <h2>ข้อมูลส่วนตัว</h2>
-        
         <p><strong>ชื่อ :</strong> สุฐิดา รอดมี</p>
         <p><strong>ชื่อเล่น :</strong> พิม</p>
         <p><strong>วันเกิด :</strong> 5 กันยายน พ.ศ 2551</p>
@@ -148,11 +199,8 @@
         <p><strong>เชื้อชาติ :</strong> ไทย</p>
         <p><strong>ศาสนา :</strong> พุทธ</p>
 
-        
         <h2 style="margin-top: 30px;">ทักษะความสามารถ</h2>
-        
         <div class="skills-container">
-            
             <span class="skill-tag">💻 Computer (Word/PPT)</span>
             <span class="skill-tag">🎨 Canva Presentation</span>
             <span class="skill-tag">🌐 HTML / CSS Basic</span>
