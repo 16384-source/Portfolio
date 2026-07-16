@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-
 <html>
-    
 <head>
     <meta charset="UTF-8">
-    
     <title>ประวัติส่วนตัว</title>
     
-   
+    <!-- ดึงฟอนต์ Sarabun มารองรับหน้านี้ด้วยค่ะ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
@@ -15,7 +12,7 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
-   
+        /* ตัวครอบการ์ดเนื้อหาทั้งหมด */
         .profile-card {
             position: relative; 
             display: flex;
@@ -32,6 +29,7 @@
             border: 2px solid #eef2ff;
         }
 
+        /* ส่วนข้อมูลทางขวา */
         .profile-info {
             text-align: left;
             flex-grow: 1;
@@ -59,6 +57,7 @@
             width: 100px; 
         }
 
+        /* กล่องคติประจำใจ */
         .motto-box {
             background: #f3f0ff;
             border-left: 5px solid #7c3aed;
@@ -71,6 +70,7 @@
             text-align: center;
         }
 
+        /* แท็กความสามารถพิเศษ (Skills) */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -88,6 +88,7 @@
             font-weight: bold;
         }
 
+        /* ==== ส่วนตกแต่งสติกเกอร์ใหม่แบบใช้รูปภาพไอคอนพาสเทลน่ารักๆ ==== */
         .sticker {
             position: absolute;
             pointer-events: none;
@@ -128,6 +129,9 @@
             }
         }
 
+        /* =======================================
+           ✨ โซนออกแบบกรอบรูปโปรไฟล์มุ้งมิ้ง ✨
+        ======================================= */
         .avatar-container {
             position: relative;
             width: 220px;
@@ -135,31 +139,35 @@
             margin: 0 auto;
         }
 
+        /* รูปด้านใน (รูปโปรไฟล์จริง) */
         .avatar-image {
-            width: 175px;
-            height: 175px;
+            width: 170px; /* บีบขนาดให้เข้ากับกรอบพอดี */
+            height: 170px;
             border-radius: 50%;
             object-fit: cover;
             position: absolute;
-            top: 22px; 
-            left: 22px;
+            top: 25px; /* จัดกึ่งกลางกรอบพอดี */
+            left: 25px;
             transition: transform 0.3s ease;
         }
 
+        /* กรอบลายเส้นประดับ SVG วาดโค้ดขึ้นมาเองไม่มีวันพัง */
         .avatar-frame {
             position: absolute;
             top: 0;
             left: 0;
             width: 220px;
             height: 220px;
-            z-index: 3; 
-            pointer-events: none;
+            z-index: 3; /* ทับอยู่บนรูปโปรไฟล์ */
+            pointer-events: none; /* เพื่อให้ยังสามารถชี้เมาส์โดนรูปข้างหลังได้ */
         }
 
+        /* ลูกเล่นตอนเอาเมาส์ชี้รูปโปรไฟล์ */
         .avatar-container:hover .avatar-image {
-            transform: scale(1.08); 
+            transform: scale(1.08); /* ซูมรูปโปรไฟล์ข้างในเล็กน้อย */
         }
 
+        /* รองรับขนาดหน้าจอโทรศัพท์มือถือ */
         @media (max-width: 768px) {
             .profile-card {
                 flex-direction: column;
@@ -188,9 +196,7 @@
             }
         }
     </style>
-    
 </head>
-    
 <body>
 
 <header style="padding: 40px 20px;">
@@ -207,27 +213,41 @@
 
 <section class="profile-card">
 
+    <!-- 🌸 สติกเกอร์ไอคอนพาสเทลน่ารักๆ -->
     <img src="https://img.icons8.com/plasticine/100/cat-footprint.png" class="sticker sticker-paw" alt="paw-sticker">
     <img src="https://img.icons8.com/plasticine/100/star--v1.png" class="sticker sticker-star" alt="star-sticker">
     <img src="https://img.icons8.com/plasticine/100/like.png" class="sticker sticker-heart" alt="heart-sticker">
 
+    <!-- ฝั่งซ้าย: รูปโปรไฟล์ในกรอบ SVG มุ้งมิ้ง -->
     <div style="position: relative; z-index: 2; width: 220px;">
         
-    
+        <!-- โซนรูปโปรไฟล์ซ้อนทับกรอบน่ารักๆ -->
         <div class="avatar-container">
-        
-            <img src="images/me.jpe" class="avatar-image" alt="รูปโปรไฟล์">
-         
-            <img src="https://i.postimg.cc/k47tXg5L/tsum-frame.png" class="avatar-frame" alt="กรอบรูป">
+            <!-- 1. รูปของพิมข้างใน (เปลี่ยนทางรูปภาพเป็น images/me.jpeg เรียบร้อยค่ะ) -->
+            <img src="images/me.jpeg" class="avatar-image" alt="รูปโปรไฟล์">
+            
+            <!-- 2. กรอบลายเส้นพาสเทลตกแต่งแบบ SVG วาดขึ้นมาเอง ไม่ใช้โฮสต์รูปภาพข้างนอก ปลอดภัย 100% -->
+            <svg class="avatar-frame" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <!-- วงกลมหลักสองชั้นเพิ่มความเก๋ -->
+                <circle cx="110" cy="110" r="95" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="8 6" />
+                <circle cx="110" cy="110" r="102" fill="none" stroke="#a5d8ff" stroke-width="2" />
+                
+                <!-- หัวใจเล็กๆ ประดับรอบกรอบ -->
+                <text x="35" y="45" font-size="16" fill="#ff8787">💖</text>
+                <text x="175" y="45" font-size="16" fill="#ff8787">⭐</text>
+                <text x="25" y="175" font-size="16" fill="#ffc078">✨</text>
+                <text x="180" y="175" font-size="16" fill="#e599f7">🐾</text>
+            </svg>
         </div>
         
+        <!-- คติประจำใจแสดงใต้รูปภาพ -->
         <div class="motto-box">
             <strong>คติประจำใจ:</strong> <br>
             "ความพยายามไม่เคยทำร้ายใครที่ตั้งใจจริง"
         </div>
     </div>
 
-  
+    <!-- ฝั่งขวา: รายละเอียดข้อมูลส่วนตัวและทักษะ -->
     <div class="profile-info" style="z-index: 2;">
         <h2>ข้อมูลส่วนตัว</h2>
         <p><strong>ชื่อ :</strong> สุฐิดา รอดมี</p>
@@ -238,7 +258,7 @@
         <p><strong>เชื้อชาติ :</strong> ไทย</p>
         <p><strong>ศาสนา :</strong> พุทธ</p>
 
-     
+        <!-- ส่วนของทักษะความสามารถเพิ่มเติม -->
         <h2 style="margin-top: 30px;">ทักษะความสามารถ</h2>
         <div class="skills-container">
             <span class="skill-tag">💻 Computer (Word/PPT)</span>
@@ -251,5 +271,4 @@
 </section>
 
 </body>
-    
 </html>
