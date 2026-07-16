@@ -1,22 +1,84 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>ประวัติส่วนตัว</title>
 
+<html>
+    
+<head>
+    
+    <meta charset="UTF-8">
+    
+    <title>ประวัติส่วนตัว</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-</head>
     
+    <style>
+     
+        .profile-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 50px; /* ระยะห่างระหว่างรูปกับข้อความ */
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9); /* พื้นหลังขาวโปร่งแสงเห็นตารางจางๆ */
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 2px solid #eef2ff;
+        }
+
+        .profile-info {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .profile-info h2 {
+            color: #5d7df7;
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed #a5d8ff;
+            padding-bottom: 10px;
+        }
+
+        .profile-info p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .profile-info strong {
+            color: #7c3aed; 
+            display: inline-block;
+            width: 100px; 
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            .profile-info strong {
+                width: auto;
+                display: inline;
+            }
+        }
+    </style>
+</head>
 <body>
 
-    <header style="padding: 40px 20px;">
+<header style="padding: 40px 20px;">
     <h1>ประวัติส่วนตัว</h1>
-
-<nav style="flex-direction: row; justify-content: center; gap: 10px; margin-top: 20px; background: transparent; box-shadow: none; padding: 0;">
+    
+    <nav style="flex-direction: row; justify-content: center; gap: 10px; margin-top: 20px; background: transparent; box-shadow: none; padding: 0;">
         <a href="index.html" style="color: white; border-color: rgba(255,255,255,0.6); background: transparent; width: auto; padding: 8px 16px; font-size: 15px;">หน้าหลัก</a>
         <a href="personal.html" style="color: white; border-color: white; background: rgba(255,255,255,0.2); width: auto; padding: 8px 16px; font-size: 15px;">ประวัติส่วนตัว</a>
         <a href="education.html" style="color: white; border-color: rgba(255,255,255,0.6); background: transparent; width: auto; padding: 8px 16px; font-size: 15px;">การศึกษา</a>
@@ -25,25 +87,20 @@
     </nav>
 </header>
 
-<section class="hero">
-
-<img src="images/me.jpe" class="profile" alt="รูปโปรไฟล์" style="margin-top: 0px; margin-bottom: 20px;">
+<section class="profile-card">
 
     <div>
+        <img src="images/cat.jpg" class="profile" alt="รูปโปรไฟล์" style="margin: 0; width: 220px; height: 220px;">
+    </div>
+
+    <div class="profile-info">
         <h2>ข้อมูลส่วนตัว</h2>
-
         <p><strong>ชื่อ :</strong> สุฐิดา รอดมี</p>
-
         <p><strong>ชื่อเล่น :</strong> พิม</p>
-
         <p><strong>วันเกิด :</strong> 5 กันยายน พ.ศ 2551</p>
-
         <p><strong>อายุ :</strong> 17 ปี</p>
-
         <p><strong>โรงเรียน :</strong> โรงเรียนพานทอง</p>
-
         <p><strong>เชื้อชาติ :</strong> ไทย</p>
-        
         <p><strong>ศาสนา :</strong> พุทธ</p>
     </div>
 
@@ -51,4 +108,3 @@
 
 </body>
 </html>
-        
