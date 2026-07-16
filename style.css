@@ -1,5 +1,4 @@
 body {
-/* ล้างค่าเริ่มต้นเพื่อให้แสดงผลเท่ากันทุกอุปกรณ์ */
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +12,6 @@ body {
     min-height: 100vh;
 }
 
-/* Header: ส่วนหัวไล่เฉดสี */
 header {
     background: linear-gradient(135deg, #7c3aed, #3b82f6);
     color: white;
@@ -42,7 +40,6 @@ header p {
     font-weight: 300;
 }
 
-/* ส่วนรูปโปรไฟล์วงกลม มีความเด้งตอน Hover */
 .profile {
     width: 150px;
     height: 150px;
@@ -59,23 +56,22 @@ header p {
     transform: scale(1.08);
 }
 
-/* Navigation: ปรับปุ่มเมนูให้ยืดหยุ่นรองรับทุกหน้าจอ */
+/* เมนูนำทาง: ใช้ flex-wrap เพื่อให้ปุ่มจัดแถวเองอัตโนมัติ */
 nav {
     background: transparent; 
     padding: 25px 15px;
     display: flex;
     flex-direction: row;     
     justify-content: center;
-    flex-wrap: wrap; /* ป้องกันปุ่มเบลอหรือตกขอบบนมือถือ */
-    gap: 10px;              
+    flex-wrap: wrap; 
+    gap: 12px;              
 }
 
 nav a {
-    display: block;
-    flex: 1 1 140px;
-    max-width: 160px;
+    display: inline-block;
+    min-width: 130px;
     text-align: center;
-    padding: 10px 15px;     
+    padding: 10px 20px;     
     color: #3b82f6;       
     font-weight: bold;
     text-decoration: none;  
@@ -95,7 +91,6 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
-/* Content Container: คุมเนื้อหาตรงกลาง */
 .main-content {
     width: 100%;
     max-width: 800px;
@@ -103,25 +98,18 @@ nav a:hover {
     padding: 0 20px;
 }
 
-/* Hero Section: กล่องข้อความ (เอากลับมาพร้อมแอนิเมชันที่เสถียรขึ้น) */
 .hero {
     background: white;
     padding: 35px;
     border-radius: 22px;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
     margin-bottom: 25px;
-    border-left: 5px solid #3b82f6; /* เพิ่มเส้นสีฟ้าด้านซ้ายเพื่อความสวยงาม */
+    border-left: 5px solid #3b82f6;
     
-    /* ระบบแอนิเมชันแบบใหม่ ลอยขึ้นนุ่ม ๆ และรองรับเบราว์เซอร์มือถือ/ไอแพด */
     opacity: 0;
     animation: fadeUpModern 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-
-/* ค่อยๆ ลอยขึ้นมาทีละกล่องแบบสมูท ไม่ล่องหนค้าง */
-.hero:nth-of-type(1) { animation-delay: 0.1s; }
-.hero:nth-of-type(2) { animation-delay: 0.25s; }
-.hero:nth-of-type(3) { animation-delay: 0.4s; }
 
 .hero:hover {
     transform: translateY(-6px);
@@ -132,7 +120,6 @@ nav a:hover {
     color: #4f46e5;
     margin-bottom: 12px;
     font-size: 1.4rem;
-    font-weight: 600;
 }
 
 .hero p {
@@ -141,11 +128,6 @@ nav a:hover {
     font-size: 1rem;
 }
 
-.hero strong {
-    color: #3b82f6;
-}
-
-/* Footer ส่วนท้ายหน้าเว็บ */
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -153,61 +135,29 @@ footer {
     font-size: 14px;
 }
 
-/* ========================================== */
-/* 📱 การปรับแต่งการแสดงผลบนหน้าจอ "มือถือ" */
-/* ========================================== */
+/* ปรับแต่งหน้าจอมือถือให้แสดงผลเมนูแถวละ 2 ปุ่ม */
 @media screen and (max-width: 600px) {
-    header {
-        padding: 40px 15px;
-    }
-    header h1 {
-        font-size: 2.2rem;
-    }
-    header h2 {
-        font-size: 1.4rem;
-    }
-    header p {
-        font-size: 1rem;
-    }
-    .profile {
-        width: 120px;
-        height: 120px;
-    }
-    nav {
-        padding: 15px 5px;
-        gap: 8px;
-    }
+    header h1 { font-size: 2.2rem; }
+    header h2 { font-size: 1.4rem; }
+    .profile { width: 120px; height: 120px; }
     nav a {
-        flex: 1 1 40%; /* บนจอมือถือ ปุ่มเมนูจะจับคู่เรียงแถวละ 2 ปุ่มสวยงาม */
-        max-width: 100%;
-        padding: 8px 10px;
+        flex: 1 1 40%; 
         font-size: 0.9rem;
+        padding: 8px 5px;
     }
-    .hero {
-        padding: 25px 20px;
-        border-radius: 16px;
-    }
+    .hero { padding: 25px 20px; }
 }
 
-/* --- KEYFRAMES ANIMATION --- */
+/* Animations */
 @keyframes zoom {
     from { transform: scale(0.85); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
-
 @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-25px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* ปรับแอนิเมชันให้เหมาะสมกับทุกอุปกรณ์และทำงานได้เสถียรขึ้น */
 @keyframes fadeUpModern {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
 }
