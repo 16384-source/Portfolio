@@ -5,26 +5,48 @@ body{
 }
 
 header{
-    background:#3B82F6;
+    background:linear-gradient(135deg,#5d7df7,#8b5cf6);
     color:white;
-    padding:20px;
+    text-align:center;
+    padding:40px;
+}
+
+nav{
+    background:white;
+    text-align:center;
+    padding:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
 }
 
 nav a{
-    color:white;
     text-decoration:none;
-    margin-right:20px;
+    color:#333;
+    margin:15px;
     font-weight:bold;
 }
 
 nav a:hover{
-    color:yellow;
+    color:#5d7df7;
 }
 
-h1{
-    color:#2563eb;
+.hero{
+    width:80%;
+    margin:40px auto;
+    display:flex;
+    align-items:center;
+    gap:40px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
-p{
-    font-size:18px;
+.hero img{
+    width:220px;
+    border-radius:50%;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.hero h2{
+    color:#5d7df7;
 }
