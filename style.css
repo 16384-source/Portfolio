@@ -96,3 +96,19 @@ nav a:hover{
 .hero h2{
     color:#5d7df7;
 }
+
+/* Animation */
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header{
+    animation: fadeDown 1s ease;
+}
