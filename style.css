@@ -108,7 +108,3 @@ nav a:hover{
         transform: translateY(0);
     }
 }
-
-header{
-    animation: fadeDown 1s ease;
-}
