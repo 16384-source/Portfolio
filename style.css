@@ -1,6 +1,6 @@
 body {
 /* ======================================================= */
-/* 1. ล้างค่าเริ่มต้นและตั้งค่าพื้นฐาน (RESET & BODY)       */
+/* 1. RESET & BASE STYLES                                  */
 /* ======================================================= */
 * {
     margin: 0;
@@ -10,227 +10,253 @@ body {
 
 body {
     font-family: 'Sarabun', sans-serif;
-    background: linear-gradient(135deg, #eef2ff, #dbeafe, #f3e8ff);
-    color: #2d3748;
+    background: linear-gradient(135deg, #f5f7ff, #eef2ff, #f8fafc);
+    color: #334155;
     min-height: 100vh;
 }
 
 /* ======================================================= */
-/* 2. ส่วนหัวแบนเนอร์ พร้อมตกแต่งสติกเกอร์ดุ๊กดิ๊ก (HEADER)    */
+/* 2. HEADER WITH FLOATING STICKERS                        */
 /* ======================================================= */
 header {
-    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
     color: white;
     text-align: center;
-    padding: 60px 20px;
-    position: relative; /* เพื่อให้สติกเกอร์อ้างอิงตำแหน่งได้ */
-    overflow: hidden;   /* ซ่อนส่วนที่ล้นออกนอกแบนเนอร์ */
+    padding: 65px 20px;
+    position: relative; 
+    overflow: hidden;   
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
     animation: fadeDown 0.8s ease-out;
 }
 
-/* --- สติกเกอร์ชิ้นที่ 1 (ดาวสีเหลืองซ้ายบน) --- */
-header::before {
-    content: "⭐";
+/* ตั้งค่าเริ่มต้นสติกเกอร์ทุกตัว */
+.sticker {
     position: absolute;
-    font-size: 2.2rem;
-    left: 8%;
-    top: 15%;
     opacity: 0.8;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
-    animation: floatSticker1 3.5s ease-in-out infinite alternate;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+    user-select: none;
+    pointer-events: none;
 }
 
-/* --- สติกเกอร์ชิ้นที่ 2 (วิ้งค์ ๆ ขวาบน) --- */
-header::after {
-    content: "✨";
-    position: absolute;
-    font-size: 2.5rem;
-    right: 10%;
-    top: 20%;
-    opacity: 0.85;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
-    animation: floatSticker2 4s ease-in-out infinite alternate-reverse;
-}
+/* 📍 จัดจุดพิกัดสติกเกอร์ให้กระจายตัวรอบๆ รูปโปรไฟล์และข้อความ */
+.st-1 { font-size: 2.2rem; left: 8%; top: 15%; animation: floatSlow 4.5s ease-in-out infinite alternate; }
+.st-2 { font-size: 1.8rem; left: 14%; bottom: 15%; animation: floatFast 3.2s ease-in-out infinite alternate-reverse; }
+.st-3 { font-size: 2.4rem; left: 24%; top: 45%; animation: floatSlow 5s ease-in-out infinite alternate; }
+.st-4 { font-size: 2.3rem; right: 8%; top: 18%; animation: floatSlow 4.2s ease-in-out infinite alternate-reverse; }
+.st-5 { font-size: 2rem; right: 16%; bottom: 20%; animation: floatFast 3.5s ease-in-out infinite alternate; }
+.st-6 { font-size: 1.8rem; right: 26%; top: 40%; animation: floatSlow 4.8s ease-in-out infinite alternate-reverse; }
+.st-7 { font-size: 2rem; left: 45%; top: 10%; animation: floatFast 4s ease-in-out infinite alternate; }
 
-/* แอนิเมชันให้สติกเกอร์ตัวที่ 1 หมุนและลอยเบา ๆ */
-@keyframes floatSticker1 {
+/* 🎬 แอนิเมชันให้สติกเกอร์ลอยสลับจังหวะอย่างนุ่มนวล */
+@keyframes floatSlow {
     from { transform: translateY(0) rotate(0deg) scale(1); }
-    to { transform: translateY(-12px) rotate(15deg) scale(1.15); }
+    to { transform: translateY(-15px) rotate(15deg) scale(1.1); }
 }
 
-/* แอนิเมชันให้สติกเกอร์ตัวที่ 2 เอียงและขยับขึ้นลง */
-@keyframes floatSticker2 {
-    from { transform: translateY(0) rotate(0deg) scale(1.1); }
-    to { transform: translateY(-15px) rotate(-15deg) scale(0.95); }
+@keyframes floatFast {
+    from { transform: translateY(0) rotate(0deg) scale(1.05); }
+    to { transform: translateY(-10px) rotate(-12deg) scale(0.95); }
 }
 
-/* ข้อความในแบนเนอร์ */
+/* ------------------------------------------------------- */
+/* ELEMENTS INSIDE HEADER */
 header h1 {
-    font-size: 2.8rem;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 3px;
     margin: 0;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     position: relative;
-    z-index: 1;
+    z-index: 2;
     animation: zoom 1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 header h2 {
-    font-size: 1.8rem;
-    margin: 15px 0 5px 0;
-    font-weight: 400;
+    font-size: 1.9rem;
+    margin: 18px 0 6px 0;
+    font-weight: 500;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 header p {
     font-size: 1.2rem;
-    opacity: 0.9;
+    opacity: 0.95;
     font-weight: 300;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
-/* รูปโปรไฟล์วงกลม เด้งตอนเมาส์ชี้ */
 .profile {
-    width: 150px;
-    height: 150px;
+    width: 155px;
+    height: 155px;
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid white;
-    margin: 20px auto;
+    margin: 22px auto;
     display: block;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
     position: relative;
-    z-index: 2; /* ให้อยู่เหนือก้อนสติกเกอร์ */
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 3;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
 }
 
 .profile:hover {
-    transform: scale(1.08);
+    transform: scale(1.08) rotate(3deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* ======================================================= */
-/* 3. เมนูนำทาง ปรับตามหน้าจออัตโนมัติ (NAVIGATION)        */
+/* 3. NAVIGATION BUTTONS                                    */
 /* ======================================================= */
 nav {
     background: transparent; 
-    padding: 25px 15px;
+    padding: 30px 15px;
     display: flex;
     flex-direction: row;     
     justify-content: center;
     flex-wrap: wrap; 
-    gap: 12px;              
+    gap: 15px;              
 }
 
 nav a {
     display: inline-block;
-    min-width: 130px;
+    min-width: 140px;
     text-align: center;
-    padding: 10px 20px;     
-    color: #3b82f6;       
-    font-weight: bold;
+    padding: 12px 24px;     
+    color: #4f46e5;       
+    font-weight: 600;
     text-decoration: none;  
-    border: 2px solid #bfdbfe; 
+    border: 2px solid #e2e8f0; 
     border-radius: 50px;    
     background: white;      
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
     font-size: 0.95rem;
 }
 
 nav a:hover {
     color: white;            
-    background: #3b82f6;
-    border-color: #3b82f6;
-    transform: translateY(-3px); 
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    border-color: transparent;
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
 }
 
 /* ======================================================= */
-/* 4. ส่วนเนื้อหาและกล่องข้อความ (MAIN CONTENT & HERO)     */
+/* 4. MAIN CONTENT & HERO CARDS                             */
 /* ======================================================= */
 .main-content {
     width: 100%;
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 10px 20px 40px 20px;
 }
 
 .hero {
     background: white;
-    padding: 35px;
-    border-radius: 22px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
-    margin-bottom: 25px;
-    border-left: 5px solid #3b82f6; /* เพิ่มเส้นสีฟ้าด้านซ้ายให้ดูโมเดิร์น */
+    padding: 35px 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(148, 163, 184, 0.12);
+    margin-bottom: 30px;
+    border-left: 6px solid #6366f1; /* เส้นขอบด้านซ้ายแบบมีดีไซน์ */
     
-    /* แอนิเมชันแบบสไลด์ขึ้นทันที ไม่บั๊กจอมืดชัวร์ */
-    animation: slideUpShow 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
+    position: relative;
+    overflow: hidden;
+    animation: slideUpShow 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* เอฟเฟกต์ตกแต่งพื้นหลังกล่องให้อ่อนละมุน */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.02), transparent);
+    pointer-events: none;
+}
+
 .hero:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(148, 163, 184, 0.22);
 }
 
 .hero h2 {
     color: #4f46e5;
-    margin-bottom: 12px;
-    font-size: 1.4rem;
+    margin-bottom: 14px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .hero p {
-    color: #4a5568;
-    line-height: 1.7;
-    font-size: 1rem;
+    color: #475569;
+    line-height: 1.8;
+    font-size: 1.05rem;
 }
 
-/* ส่วนท้ายสุดของเว็บ */
+/* ======================================================= */
+/* 5. FOOTER                                               */
+/* ======================================================= */
 footer {
     text-align: center;
     padding: 40px 20px;
     color: #94a3b8;
     font-size: 14px;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 20px;
 }
 
 /* ======================================================= */
-/* 5. ปรับหน้าจอสำหรับโทรศัพท์มือถือ (RESPONSIVE MOBILE)       */
+/* 6. RESPONSIVE DESIGN (MOBILE OPTIMIZATION)              */
 /* ======================================================= */
 @media screen and (max-width: 600px) {
-    header h1 { font-size: 2.2rem; }
-    header h2 { font-size: 1.4rem; }
+    header { padding: 50px 15px; }
+    header h1 { font-size: 2.3rem; }
+    header h2 { font-size: 1.5rem; }
     
-    /* ย่อขนาดสติกเกอร์ลงบนมือถือเพื่อไม่ให้บังตัวหนังสือ */
-    header::before { font-size: 1.6rem; left: 5%; }
-    header::after { font-size: 1.8rem; right: 5%; }
+    /* ย่อขนาดสติกเกอร์และปรับหลบในจอมือถือ */
+    .sticker { opacity: 0.7; }
+    .st-1 { font-size: 1.6rem; left: 4%; }
+    .st-2 { font-size: 1.3rem; left: 8%; }
+    .st-3 { display: none; } 
+    .st-4 { font-size: 1.7rem; right: 4%; }
+    .st-5 { font-size: 1.4rem; right: 8%; }
+    .st-6 { display: none; }
+    .st-7 { display: none; }
+
+    .profile { width: 125px; height: 125px; }
     
-    .profile { width: 120px; height: 120px; }
-    
+    nav { padding: 20px 10px; gap: 10px; }
     nav a {
-        flex: 1 1 40%; /* จัดเรียงเมนูกระจายเป็นแถวละ 2 ปุ่มสวยงาม */
+        flex: 1 1 43%; 
         font-size: 0.9rem;
-        padding: 8px 5px;
+        padding: 10px 12px;
+        min-width: 110px;
     }
     
-    .hero { padding: 25px 20px; }
+    .hero { 
+        padding: 25px 20px; 
+        border-radius: 18px;
+    }
+    .hero h2 { font-size: 1.3rem; }
+    .hero p { font-size: 0.98rem; }
 }
 
 /* ======================================================= */
-/* 6. ระบบแอนิเมชันเคลื่อนไหว (KEYFRAMES)                   */
+/* 7. ANIMATIONS STRUCT                                    */
 /* ======================================================= */
 @keyframes zoom {
     from { transform: scale(0.85); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
-
 @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-25px); }
+    from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes slideUpShow {
-    from { transform: translateY(30px); }
-    to { transform: translateY(0); }
+    from { transform: translateY(35px); opacity: 0.7; }
+    to { transform: translateY(0); opacity: 1; }
 }
