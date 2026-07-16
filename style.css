@@ -122,16 +122,16 @@ nav a:hover{
     margin-bottom:30px;
 }
 
-.profile img{
+.profile{
     width:180px;
     height:180px;
     border-radius:50%;
     object-fit:cover;
-    border:6px solid #fff;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
-    transition:.4s;
+    border:5px solid white;
+    margin:20px auto;
+    display:block;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
-
 .profile img:hover{
     transform:scale(1.08);
 }
