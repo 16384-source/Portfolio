@@ -1,5 +1,7 @@
 body {
-/* ล้างค่าเริ่มต้นเพื่อให้แสดงผลเท่ากันทุกอุปกรณ์ */
+/* ======================================================= */
+/* 1. ล้างค่าเริ่มต้นและตั้งค่าพื้นฐาน (RESET & BODY)       */
+/* ======================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -13,20 +15,63 @@ body {
     min-height: 100vh;
 }
 
-/* Header: ส่วนหัวไล่เฉดสี */
+/* ======================================================= */
+/* 2. ส่วนหัวแบนเนอร์ พร้อมตกแต่งสติกเกอร์ดุ๊กดิ๊ก (HEADER)    */
+/* ======================================================= */
 header {
     background: linear-gradient(135deg, #7c3aed, #3b82f6);
     color: white;
     text-align: center;
-    padding: 50px 20px;
+    padding: 60px 20px;
+    position: relative; /* เพื่อให้สติกเกอร์อ้างอิงตำแหน่งได้ */
+    overflow: hidden;   /* ซ่อนส่วนที่ล้นออกนอกแบนเนอร์ */
     animation: fadeDown 0.8s ease-out;
 }
 
+/* --- สติกเกอร์ชิ้นที่ 1 (ดาวสีเหลืองซ้ายบน) --- */
+header::before {
+    content: "⭐";
+    position: absolute;
+    font-size: 2.2rem;
+    left: 8%;
+    top: 15%;
+    opacity: 0.8;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+    animation: floatSticker1 3.5s ease-in-out infinite alternate;
+}
+
+/* --- สติกเกอร์ชิ้นที่ 2 (วิ้งค์ ๆ ขวาบน) --- */
+header::after {
+    content: "✨";
+    position: absolute;
+    font-size: 2.5rem;
+    right: 10%;
+    top: 20%;
+    opacity: 0.85;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+    animation: floatSticker2 4s ease-in-out infinite alternate-reverse;
+}
+
+/* แอนิเมชันให้สติกเกอร์ตัวที่ 1 หมุนและลอยเบา ๆ */
+@keyframes floatSticker1 {
+    from { transform: translateY(0) rotate(0deg) scale(1); }
+    to { transform: translateY(-12px) rotate(15deg) scale(1.15); }
+}
+
+/* แอนิเมชันให้สติกเกอร์ตัวที่ 2 เอียงและขยับขึ้นลง */
+@keyframes floatSticker2 {
+    from { transform: translateY(0) rotate(0deg) scale(1.1); }
+    to { transform: translateY(-15px) rotate(-15deg) scale(0.95); }
+}
+
+/* ข้อความในแบนเนอร์ */
 header h1 {
     font-size: 2.8rem;
     font-weight: 600;
     letter-spacing: 2px;
     margin: 0;
+    position: relative;
+    z-index: 1;
     animation: zoom 1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -34,15 +79,19 @@ header h2 {
     font-size: 1.8rem;
     margin: 15px 0 5px 0;
     font-weight: 400;
+    position: relative;
+    z-index: 1;
 }
 
 header p {
     font-size: 1.2rem;
     opacity: 0.9;
     font-weight: 300;
+    position: relative;
+    z-index: 1;
 }
 
-/* ส่วนรูปโปรไฟล์วงกลม มีความเด้งตอน Hover */
+/* รูปโปรไฟล์วงกลม เด้งตอนเมาส์ชี้ */
 .profile {
     width: 150px;
     height: 150px;
@@ -52,6 +101,8 @@ header p {
     margin: 20px auto;
     display: block;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2; /* ให้อยู่เหนือก้อนสติกเกอร์ */
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -59,7 +110,9 @@ header p {
     transform: scale(1.08);
 }
 
-/* Navigation: ปรับปุ่มเมนูยืดหยุ่นรองรับทุกหน้าจออัตโนมัติ */
+/* ======================================================= */
+/* 3. เมนูนำทาง ปรับตามหน้าจออัตโนมัติ (NAVIGATION)        */
+/* ======================================================= */
 nav {
     background: transparent; 
     padding: 25px 15px;
@@ -94,7 +147,9 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
-/* Content Container: คุมเนื้อหาตรงกลาง */
+/* ======================================================= */
+/* 4. ส่วนเนื้อหาและกล่องข้อความ (MAIN CONTENT & HERO)     */
+/* ======================================================= */
 .main-content {
     width: 100%;
     max-width: 800px;
@@ -102,16 +157,15 @@ nav a:hover {
     padding: 0 20px;
 }
 
-/* Hero Section: กล่องข้อความ (แก้ไขตัดปัญหาล่องหนถาวร!) */
 .hero {
     background: white;
     padding: 35px;
     border-radius: 22px;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
     margin-bottom: 25px;
-    border-left: 5px solid #3b82f6;
+    border-left: 5px solid #3b82f6; /* เพิ่มเส้นสีฟ้าด้านซ้ายให้ดูโมเดิร์น */
     
-    /* 🌟 เปลี่ยนมาใช้แบบแสดงผลทันที ไม่เสี่ยงบั๊กจอมืด และยังได้แอนิเมชันขยับลอยขึ้นสวยๆ */
+    /* แอนิเมชันแบบสไลด์ขึ้นทันที ไม่บั๊กจอมืดชัวร์ */
     animation: slideUpShow 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -133,7 +187,7 @@ nav a:hover {
     font-size: 1rem;
 }
 
-/* Footer ส่วนท้ายหน้าเว็บ */
+/* ส่วนท้ายสุดของเว็บ */
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -141,20 +195,31 @@ footer {
     font-size: 14px;
 }
 
-/* 📱 การปรับแต่งการแสดงผลบนหน้าจอ "มือถือ" */
+/* ======================================================= */
+/* 5. ปรับหน้าจอสำหรับโทรศัพท์มือถือ (RESPONSIVE MOBILE)       */
+/* ======================================================= */
 @media screen and (max-width: 600px) {
     header h1 { font-size: 2.2rem; }
     header h2 { font-size: 1.4rem; }
+    
+    /* ย่อขนาดสติกเกอร์ลงบนมือถือเพื่อไม่ให้บังตัวหนังสือ */
+    header::before { font-size: 1.6rem; left: 5%; }
+    header::after { font-size: 1.8rem; right: 5%; }
+    
     .profile { width: 120px; height: 120px; }
+    
     nav a {
-        flex: 1 1 40%; 
+        flex: 1 1 40%; /* จัดเรียงเมนูกระจายเป็นแถวละ 2 ปุ่มสวยงาม */
         font-size: 0.9rem;
         padding: 8px 5px;
     }
+    
     .hero { padding: 25px 20px; }
 }
 
-/* --- KEYFRAMES ANIMATION --- */
+/* ======================================================= */
+/* 6. ระบบแอนิเมชันเคลื่อนไหว (KEYFRAMES)                   */
+/* ======================================================= */
 @keyframes zoom {
     from { transform: scale(0.85); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -165,12 +230,7 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 🌟 แอนิเมชันแบบใหม่: ไม่เซต opacity เป็น 0 ค้างไว้ ป้องกันปัญหาบน Safari/iOS */
 @keyframes slideUpShow {
-    from {
-        transform: translateY(30px);
-    }
-    to {
-        transform: translateY(0);
-    }
+    from { transform: translateY(30px); }
+    to { transform: translateY(0); }
 }
