@@ -1,1 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>งานอดิเรก - Portfolio สุฐิดา รอดมี</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* 🎨 ตกแต่งพื้นหลังและสติกเกอร์สำหรับหน้างานอดิเรก */
+        body {
+            background-color: #f1f5f9;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-sticker {
+            position: absolute;
+            font-size: 2.3rem;
+            opacity: 0.6;
+            animation: floatSticker 4s ease-in-out infinite alternate;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .bg-st-1 { top: 15%; left: 6%; animation-delay: 0s; }
+        .bg-st-2 { top: 35%; right: 8%; animation-delay: 0.8s; }
+        .bg-st-3 { bottom: 20%; left: 9%; animation-delay: 1.6s; }
+
+        @keyframes floatSticker {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-12px) rotate(10deg); }
+        }
+
+        .hobby-nav-container {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .hobby-page-main {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hobby-card-wrapper {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            border: 2px solid #e0e7ff;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.05);
+        }
+
+        .hobby-title-main {
+            color: #4f46e5;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .hobby-desc {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        /* 📸 ส่วนจัดวางการ์ดงานอดิเรกแบบ Grid สวยงาม */
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .hobby-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hobby-item:hover {
+            transform: translateY(-5px);
+            background: white;
+            border-color: #6366f1;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.08);
+        }
+
+        .hobby-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .hobby-name {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .hobby-text {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+    
+<body>
+
+<span class="bg-sticker bg-st-1">🎨</span>
+<span class="bg-sticker bg-st-2">🎵</span>
+<span class="bg-sticker bg-st-3">📸</span>
+
+<div class="hobby-nav-container">
+    <nav style="margin: 0 auto; box-shadow: none; background: transparent;">
+        <a href="index.html">หน้าหลัก</a>
+        <a href="personal.html">ประวัติส่วนตัว</a>
+        <a href="education.html">การศึกษา</a>
+        <a href="hobby.html" class="active">งานอดิเรก</a>
+        <a href="contact.html">ติดต่อ</a>
+    </nav>
+</div>
+
+<main class="hobby-page-main">
+    <div class="hobby-card-wrapper">
+        <h2 class="hobby-title-main">🎨 งานอดิเรก & กิจกรรมยามว่าง (My Hobbies)</h2>
+        <p class="hobby-desc">สิ่งที่ฉันชอบทำในเวลาว่างเพื่อผ่อนคลาย ✨</p>
+        
+        <div class="hobby-grid">
+            <div class="hobby-item">
+                <span class="hobby-icon">🎨</span>
+                <h3 class="hobby-name">วาดภาพ / ออกแบบ</h3>
+                <p class="hobby-text">ชอบการวาดรูปและวาดตัวการ์ตูนต่างๆ</p>
+            </div>
+
+            <div class="hobby-item">
+                <span class="hobby-icon">🎵</span>
+                <h3 class="hobby-name">ฟังเพลง / ดูภาพยนตร์</h3>
+                <p class="hobby-text">ช่วยเปิดมุมมองใหม่ๆ และเรียนรู้เรื่องภาษาผ่านการดูหนังฟังเพลง</p>
+            </div>
+
+            <div class="hobby-item">
+                <span class="hobby-icon">📚</span>
+                <h3 class="hobby-name">อ่านการ์ตูน</h3>
+                <p class="hobby-text">สร้างความสนุกสนานในเรื่องที่สนใจ</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Portfolio | สุฐิดา รอดมี</p>
+</footer>
+
+</body>
+</html>
 
